@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyStore - E-Commerce</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="navbar">
+  <div class="container nav-content">
+    <a href="index.html" class="logo">My<span>Store</span></a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="index.html#categories">Categories</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <a href="products.html" class="search-btn">🔍</a>
+      <a href="cart.html" class="cart-btn">🛒<span class="cart-count">0</span></a>
+      <a href="login.html" class="login-btn">Login</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-text">
+      <p class="hero-small-title">Welcome To MyStore</p>
+      <h1>Find Everything You <span>Need In One Place</span></h1>
+      <p>Discover our latest products with great prices and high quality.</p>
+      <div class="hero-buttons">
+        <a href="products.html" class="btn primary-btn">Shop Now</a>
+        <a href="#categories" class="btn secondary-btn">Explore Categories</a>
+      </div>
+    </div>
+    <div class="hero-image"><div class="hero-card">🛍️</div></div>
+  </div>
+</section>
+
+<section class="categories" id="categories">
+  <div class="container">
+    <div class="section-title"><p>Categories</p><h2>Shop By Category</h2></div>
+    <div class="category-grid">
+      <a class="category-card" href="products.html?category=Electronics"><div class="category-icon">📱</div><h3>Electronics</h3><p>120 Products</p></a>
+      <a class="category-card" href="products.html?category=Clothes"><div class="category-icon">👕</div><h3>Clothes</h3><p>85 Products</p></a>
+      <a class="category-card" href="products.html?category=Shoes"><div class="category-icon">👟</div><h3>Shoes</h3><p>60 Products</p></a>
+      <a class="category-card" href="products.html?category=Watches"><div class="category-icon">⌚</div><h3>Watches</h3><p>40 Products</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="container">
+    <div class="section-title"><p>Our Products</p><h2>Featured Products</h2></div>
+    <div class="products-grid" id="featured-products"></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container about-content">
+    <p class="section-label">About Us</p>
+    <h2>Your Trusted Online Store</h2>
+    <p>MyStore is a simple online store where you can find electronics, clothes, shoes and many other products.</p>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="container footer-content">
+    <div><h2>My<span>Store</span></h2><p>Your favorite online shopping destination.</p></div>
+    <div><h3>Quick Links</h3><a href="index.html">Home</a><a href="products.html">Products</a><a href="#categories">Categories</a></div>
+    <div><h3>Contact</h3><p>📧 info@mystore.com</p><p>📞 +20 100 000 0000</p></div>
+  </div>
+  <div class="copyright"><p>© 2026 MyStore. All Rights Reserved.</p></div>
+</footer>
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+<script>renderFeaturedProducts();</script>
+</body>
+</html>

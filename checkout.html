@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout - MyStore</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<header class="navbar"><div class="container nav-content"><a href="index.html" class="logo">My<span>Store</span></a><div class="nav-actions"><a href="cart.html" class="cart-btn">🛒<span class="cart-count">0</span></a></div></div></header>
+<main class="page-section"><div class="container checkout-layout">
+<form id="checkoutForm" class="form-card"><h2>Checkout</h2><label>Full Name<input required name="name" type="text"></label><label>Email<input required name="email" type="email"></label><label>Phone<input required name="phone" type="tel"></label><label>Address<textarea required name="address"></textarea></label><label>Payment Method<select name="payment"><option>Cash on Delivery</option><option>Card</option></select></label><button class="add-cart" type="submit">Place Order</button></form>
+<div class="summary-card"><h2>Order Summary</h2><div id="checkout-summary"></div></div>
+</div></main>
+<script src="js/products.js"></script><script src="js/app.js"></script><script>renderCheckout();</script>
+</body></html>

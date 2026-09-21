@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products - MyStore</title><link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="navbar"><div class="container nav-content">
+<a href="index.html" class="logo">My<span>Store</span></a>
+<nav><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="index.html#categories">Categories</a></li><li><a href="index.html#about">About</a></li><li><a href="index.html#contact">Contact</a></li></ul></nav>
+<div class="nav-actions"><a href="products.html" class="search-btn">🔍</a><a href="cart.html" class="cart-btn">🛒<span class="cart-count">0</span></a><a href="login.html" class="login-btn">Login</a></div>
+</div></header>
+<main class="page-section"><div class="container">
+<div class="section-title"><p>Our Store</p><h1>All Products</h1></div>
+<div class="filters"><input id="searchInput" type="text" placeholder="Search products..."><select id="categoryFilter"><option value="All">All Categories</option><option>Electronics</option><option>Clothes</option><option>Shoes</option><option>Watches</option></select></div>
+<div class="products-grid" id="all-products"></div>
+</div></main>
+<footer><div class="copyright"><p>© 2026 MyStore. All Rights Reserved.</p></div></footer>
+<script src="js/products.js"></script><script src="js/app.js"></script><script>renderProductsPage();</script>
+</body></html>
