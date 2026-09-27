@@ -58,13 +58,14 @@ $total = 0;
             <?php else: ?>
         <?php foreach ($cart as $product_id => $quantity): ?>
          <?php
-        $sql = "SELECT * FROM products WHERE id = :id";
+        $product_ids = array_keys($cart);
+
+        $stmt = $conn->prepare($sql);$placeholders = implode(',', array_fill(0, count($product_ids), '?'));
+
+        $sql = "SELECT * FROM products WHERE id IN ($placeholders)";
 
         $stmt = $conn->prepare($sql);
-
-        $stmt->execute([
-            ':id' => $product_id
-        ]);
+        $stmt->execute($product_ids);
 
         $product = $stmt->fetch(PDO::FETCH_ASSOC);
 

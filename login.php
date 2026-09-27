@@ -4,6 +4,22 @@ session_start();
 
 require_once "config/database.php";
 $stmt = $conn->prepare($sql);
+ $sql = "SELECT * FROM products WHERE id = :id";
+
+    $stmt = $conn->prepare($sql);
+
+    $stmt->execute([
+        ':id' => $product_id
+    ]);
+      $product = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$product) {
+       echo "continue";
+       exit;
+    }
+
+
+
 $error = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -39,6 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_email'] = $user['email'];
 
             header("Location: index.php");
+            exit;
 
         }
          else {

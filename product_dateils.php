@@ -3,6 +3,7 @@ session_start();
 require_once "config/database.php";
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     echo "Product not found";
+    exit;
 }
 $id = $_GET['id']; 
 
@@ -17,9 +18,14 @@ $stmt->execute([
     ':id' => $id
 ]);
 $product = $stmt->fetch(PDO::FETCH_ASSOC);
-        if (!$product) {
+
+if (!$product) {
     echo "Product not found";
+    exit;
 }
+
+echo $product['name'];
+exit;
 ?>
 <!DOCTYPE html>
 <html lang="en">

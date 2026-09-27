@@ -6,24 +6,22 @@ require_once "config/database.php";
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
-   
+   exit;
 }
 
-$cart = $_SESSION['card'] ?? [];
+$cart = $_SESSION['cart'] ?? [];
 
 if (empty($cart)) {
-    header("Location: card.php");
-  
+    header("Location: cart.php");
+  exit;
 }
+$sql = "SELECT * FROM products WHERE id = :id";
 $stmt = $conn->prepare($sql);
 $total = 0;
 $products = [];
 
-foreach ($card as $product_id => $quantity) {
+foreach ($cart as $product_id => $quantity) {
 
-    $sql = "SELECT * FROM products WHERE id = :id";
-
-    
 
     $stmt->execute([
         ':id' => $product_id
@@ -78,11 +76,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':user_id' => $_SESSION['user_id'],
                 ':total_price' => $total
             ]);
+               $conn->commit();
+               } catch (Exception $e) {
+
+            $conn->rollBack();
+
+            $error = "Something went wrong. Please try again.";
+        }     
+
+            
 
             $order_id = $conn->lastInsertId();
-
-        
-
             foreach ($products as $product) {
 
                 $sql = "INSERT INTO order_items
@@ -100,22 +104,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ]);
             }
 
-           
-
-           
-
-            $_SESSION['card'] = [];
+            $_SESSION['cart'] = [];
 
             header("Location: order-success.php?id=" . $order_id);
-
+            exit;
           
 
-        } catch (Exception $e) {
-
-            $conn->rollBack();
-
-            $error = "Something went wrong. Please try again.";
-        }
+        
     }
 }
 

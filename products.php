@@ -12,7 +12,21 @@ $sql = "
 
     ORDER BY products.id DESC";
 
+
+$sql = "SELECT * FROM products WHERE id = :id";
+
 $stmt = $conn->prepare($sql);
+
+$stmt->execute([
+    ':id' => $product_id
+]);
+
+$product = $stmt->fetchAll(PDO::FETCH_ASSOC);
+foreach ($products as $product) {
+    echo $product['name'];
+    exit;
+}
+
 
 ?> 
 <!DOCTYPE html>

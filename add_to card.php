@@ -3,6 +3,7 @@ session_start();
 require_once "config/database.php";
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     echo "Product not found";
+    exit;
 }
 $id = $_GET['id']; 
 $sql = "SELECT * FROM products WHERE id = :id";
@@ -13,6 +14,7 @@ $stmt->execute([
 ]);
 if (!$product) {
     echo "Product not found";
+    exit;
 }
 
 
@@ -32,6 +34,6 @@ if (isset($_SESSION['cart'][$id])) {
 }
 
     header("Location: cart.php");
-exit;
+    exit;
 
 ?>

@@ -4,6 +4,17 @@ session_start();
 
 require_once "config/database.php";
 $stmt = $conn->prepare($sql);
+$sql = "SELECT * FROM products WHERE id = :id";
+
+$stmt = $conn->prepare($sql);
+
+$stmt->execute([
+    ':id' => $product_id
+]);
+
+$product = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -103,12 +114,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <p style="color:green;">
         <?= htmlspecialchars($success) ?>
     </p>
+   
 
     <a href="login.php">
         Login Now
     </a>
 
-<?php else: ?>
+ <?php endif; ?>
 
 <form action="" method="POST">
 
@@ -172,7 +184,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     Already have an account? Login
 </a>
 
-<?php endif; ?>
+
 
 </body>
 

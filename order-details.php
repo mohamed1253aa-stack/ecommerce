@@ -31,7 +31,10 @@ $order = $stmt->fetch(PDO::FETCH_ASSOC);
 if (!$order) {
 
     echo "Order not found.";
+    exit;
 }
+echo $order['total_price'];
+exit;
 $sql = "SELECT
             order_items.*,
             products.name,

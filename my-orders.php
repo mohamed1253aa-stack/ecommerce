@@ -6,6 +6,7 @@ require_once "config/database.php";
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
+    exit;
 
 }
 
@@ -36,47 +37,52 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
           
 </head>
 <body>
-   <h1>My Orders</h1>
+    <h1>My Orders</h1>
 
-<?php if (empty($orders)): ?>
+    <?php if (empty($orders)): ?>
 
-    <h2>You don't have any orders yet.</h2>
+        <h2>You don't have any orders yet.</h2>
 
-    <a href="products.php">
-        Start Shopping
-    </a>
-     <?php foreach ($orders as $order): ?>
+        <a href="products.php">
+            Start Shopping
+        </a>
 
-        <div class="order">
+    <?php else: ?>
 
-            <h3>
-                Order #<?= $order['id'] ?>
-            </h3>
+        <?php foreach ($orders as $order): ?>
 
-            <p>
-                Total: $<?= number_format($order['total_price'], 2) ?>
-               
-            </p>
+            <div class="order">
 
-            <p>
-                Status: <?= htmlspecialchars($order['status']) ?>
-               
-            </p>
+                <h3>
+                    Order #<?= $order['id'] ?>
+                </h3>
 
-            <p>
-                Date:<?= htmlspecialchars($order['created_at']) ?>
-                
-            </p>
+                <p>
+                    Total: $<?= number_format($order['total_price'], 2) ?>
+                </p>
+
+                <p>
+                    Status: <?= htmlspecialchars($order['status']) ?>
+                </p>
+
+                <p>
+                    Date: <?= htmlspecialchars($order['created_at']) ?>
+                </p>
+
                 <a href="order-details.php?id=<?= $order['id'] ?>">
-                View Order
-            </a>
+                    View Order
+                </a>
 
-        </div>
+            </div>
 
-        <hr>
+            <hr>
 
-    <?php endforeach; ?>
+        <?php endforeach; ?>
 
+    <?php endif; ?>
+
+</body>
+</html>
 
 </body>
 </html>
